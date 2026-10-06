@@ -1,0 +1,10 @@
+{
+  "name": "六级 560 冲刺看板",
+  "short_name": "六级560冲刺",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef5ff",
+  "theme_color": "#3277eb",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
+
