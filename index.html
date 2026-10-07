@@ -43,14 +43,6 @@
       </div>
     </section>
 
-    <section id="listening" class="view">
-      <article class="card"><p class="eyebrow">INTENSIVE LISTENING LAB</p><h2>精听播放器</h2><label class="file-box">选择手机里的听力音频<input id="audioFile" type="file" accept="audio/*"></label><audio id="audioPlayer" controls></audio>
-        <div class="form-grid three"><label>速度<select id="audioRate"><option value="0.8">0.8×</option><option value="1" selected>1.0×</option><option value="1.2">1.2×</option><option value="1.4">1.4×</option></select></label><label>A 点（秒）<input id="loopStart" type="number" value="0" step="0.5"></label><label>B 点（秒）<input id="loopEnd" type="number" value="30" step="0.5"></label></div>
-        <div class="inline wrap"><button id="setA" class="ghost">当前设为 A</button><button id="setB" class="ghost">当前设为 B</button><label class="check"><input id="loopToggle" type="checkbox">A–B 循环</label><button id="toggleTranscript" class="ghost">隐藏原文</button></div>
-        <label>原文 / 听写<textarea id="transcript" class="tall" placeholder="粘贴原文；隐藏后逐句听写，再显示订正。"></textarea></label>
-      </article>
-    </section>
-
     <section id="writing" class="view">
       <div class="layout two-one"><article class="card"><p class="eyebrow">BEFORE / AFTER</p><h2>写作翻译修改对照</h2><form id="revisionForm" class="form-stack"><div class="form-grid three"><label>类型<select name="kind"><option value="写作">写作</option><option value="翻译">翻译</option></select></label><label>日期<input name="date" type="date"></label><label>限时分钟<input name="minutes" type="number" value="30"></label></div><label>题目 / 中文原文<textarea name="prompt" required></textarea></label><div class="form-grid"><label>第一次限时原稿<textarea name="original" class="tall" required></textarea></label><label>订正后的重写稿<textarea name="revised" class="tall"></textarea></label></div><label>反复出现的问题<textarea name="errors" placeholder="主谓一致、冠词、直译、句式单一……"></textarea></label><button class="cta" type="submit">保存修改对照</button></form></article><article class="card"><p class="eyebrow">REVISION HISTORY</p><h2>最近重写</h2><div id="revisionList" class="records"></div></article></div>
     </section>
@@ -69,7 +61,7 @@
     </section>
   </main>
 
-  <nav class="bottom-nav" aria-label="主要功能"><button data-view="today" class="active">今日</button><button data-view="listening">精听</button><button data-view="writing">写译</button><button data-view="reading">阅读</button><button data-view="papers">真题</button><button data-view="review">复盘</button></nav>
+  <nav class="bottom-nav" aria-label="主要功能"><button data-view="today" class="active">今日</button><button data-view="writing">写译</button><button data-view="reading">阅读</button><button data-view="papers">真题</button><button data-view="review">复盘</button></nav>
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="app.js"></script>
 </body>
