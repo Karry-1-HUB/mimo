@@ -145,15 +145,6 @@ $("#budgetSelect").addEventListener("change", event => { const budget = Number(e
 $("#rescueBtn").addEventListener("click", () => { state.days[today] = { budget: 20, note: state.days[today]?.note || "", updatedAt: new Date().toISOString(), tasks: [["高频词主动回忆",5],["第一弱项最小训练",8],["一道错题重新定位",4],["写下明天第一步",3]].map(([label,minutes],index)=>({ id:`rescue-${today}-${index}`, label, minutes, done:false })) }; save("已切换为 20 分钟急救计划"); });
 $("#saveTodayBtn").addEventListener("click", () => { ensureToday(); state.days[today].note = $("#dailyNote").value; state.days[today].updatedAt = new Date().toISOString(); save("今日进度已保存在手机"); });
 
-let audioUrl = "";
-const audio = $("#audioPlayer");
-$("#audioFile").addEventListener("change", event => { const file = event.target.files?.[0]; if (!file) return; if (audioUrl) URL.revokeObjectURL(audioUrl); audioUrl = URL.createObjectURL(file); audio.src = audioUrl; showToast("音频已载入，不会上传"); });
-$("#audioRate").addEventListener("change", event => { audio.playbackRate = Number(event.target.value); });
-$("#setA").addEventListener("click", () => { $("#loopStart").value = audio.currentTime.toFixed(1); });
-$("#setB").addEventListener("click", () => { $("#loopEnd").value = audio.currentTime.toFixed(1); });
-audio.addEventListener("timeupdate", () => { if ($("#loopToggle").checked && audio.currentTime >= Number($("#loopEnd").value) && Number($("#loopEnd").value) > Number($("#loopStart").value)) { audio.currentTime = Number($("#loopStart").value); audio.play().catch(()=>{}); } });
-$("#toggleTranscript").addEventListener("click", () => { const field = $("#transcript"); field.classList.toggle("masked"); $("#toggleTranscript").textContent = field.classList.contains("masked") ? "显示原文" : "隐藏原文"; });
-
 $("#revisionForm").elements.date.value = today;
 $("#revisionForm").addEventListener("submit", event => { event.preventDefault(); const item = formObject(event.currentTarget); state.revisions.unshift({ ...item, id: crypto.randomUUID(), savedAt: new Date().toISOString() }); event.currentTarget.reset(); event.currentTarget.elements.date.value = today; event.currentTarget.elements.minutes.value = 30; save("写译修改对照已保存"); });
 $("#hesitationForm").addEventListener("submit", event => { event.preventDefault(); const item = formObject(event.currentTarget); state.hesitations.unshift({ ...item, date: today, id: crypto.randomUUID(), savedAt: new Date().toISOString() }); event.currentTarget.reset(); save("阅读判断证据已保存"); });
